@@ -8,12 +8,33 @@
      <meta http-equiv="x-ua-compatible" content="ie=edge">
  
      <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="css/index.css">
      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
     <title>Ristorante Con Fusion</title>
 </head>
 
 <body>
-
+   <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+       <div class="container">
+        <a class="navbar-brand" href="#">Ristorante con Fusion</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navb">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="Navb">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutus.html">About us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+        </div>
+        
+       </div>
+   </nav>
+   <ol class="c-12 breadcrumb">
+       <li class="breadcrumb-items"><a href="#">Home</a></li>
+   </ol>
     <header class="header jumbotron">
         <div class="row">
             <div>
@@ -59,19 +80,19 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         <div>
-            <div>             
-                <div>
+            <div class="row align-items-center">             
+                <div class="col-lg-4 col-md-2">
                     <h5>Links</h5>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="aboutus.html">About</a></li>
                         <li><a href="#">Menu</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="col-lg-4 col-md-2">
                     <h5>Our Address</h5>
                     <address>
 		              121, Clear Water Bay Road<br>
@@ -82,7 +103,7 @@
 		              Email: <a href="mailto:confusion@food.net">confusion@food.net</a>
 		           </address>
                 </div>
-                <div>
+                <div class="col-lg-4 col-md">
                     <div>
                         <a href="http://google.com/+">Google+</a>
                         <a href="http://www.facebook.com/profile.php?id=">Facebook</a>
@@ -94,16 +115,15 @@
                 </div>
            </div>
            <div>             
-                <div>
+                <div class="col-12 align-items-center">
                     <p>© Copyright 2018 Ristorante Con Fusion</p>
                 </div>
            </div>
         </div>
     </footer>
+</body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
-
 </html>
