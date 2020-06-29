@@ -13,3 +13,7 @@ body{
 .navbar-dark {
      background-color: #512DA8;
 }
+.btns{
+    padding:10px;
+    margin:10px;
+}
