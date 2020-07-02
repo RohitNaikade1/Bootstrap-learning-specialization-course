@@ -11,11 +11,67 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Ristorante Con Fusion</title>
 </head>
 
 <body>
+    <div class="modal fade bd-example-modal-lg" id="FormModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Reserve a Table</h5>
+                    <button type="button" class="close" id="FormClose"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <label for="guests" class="col-12 col-md-4 col-form-label">Number of Guests</label>
+                                <div class="ml-3">
+                                    <label class="radio"><input type="radio" name="seats" checked> 1 </label>
+                                    <label class="radio"><input type="radio" name="seats"> 2 </label>
+                                    <label class="radio"><input type="radio" name="seats"> 3 </label>
+                                    <label class="radio"><input type="radio" name="seats"> 4 </label>
+                                    <label class="radio"><input type="radio" name="seats"> 5 </label>
+                                    <label class="radio"><input type="radio" name="seats"> 6 </label>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <label for="checking" class="col-12 col-md-4 col-form-label">Section</label>
+                                <div class="col-12 col-md-6 btn-sm btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-sm btn-success active">
+                                      <input type="radio" name="options" id="option1" autocomplete="off" checked> Non-Smoking
+                                    </label>
+                                    <label class="btn btn-sm btn-danger">
+                                      <input type="radio" name="options" id="option2" autocomplete="off">Smoking
+                                    </label>
+                                  </div>
+                            </div>
+                            <div class="row mt-4">
+                                <label for="date" class="col-12 col-md-4 col-form-label">Date and Time</label>
+                                <div class="col-12 col-md-4"><input type="text" class="form-control" id="date"
+                                        name="date" placeholder="Date"></input></div>
+                                <div class="col-12 col-md-4"><input type="text" class="form-control" id="time"
+                                        name="time" placeholder="Time"></input></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="mr-auto">
+                        <button type="button" class="btn btn-secondary" id="FormCancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Reserve</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="img/logo.png" height="40" width="40" class="img-fluid">Ristorante
@@ -34,8 +90,8 @@
                     <li class="nav-item"><a class="nav-link" href="contactus.html"><span
                                 class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
-                <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                <span class="navbar-text" id="loginCaller">
+                    <a>
                         <span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
@@ -49,22 +105,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Login</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span
+                    <button type="button" class="close" id="loginClose"><span
                             aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="container-fluid">
                             <div class="row">
-                                <label class="form-control-label col-md-4">Email</label>
-                                <input type="email" class="form-control col-md-6" placeholder="Enter Email">
-                            </div>
-                            <div class="row mt-2">
-                                <label class="form-control-label col-md-4">Password</label>
-                                <input type="email" class="form-control col-md-6" placeholder="Enter Password">
-                            </div>
-                            <div class="row mt-2">
-                                <div class="form-check offset-md-4">
+                                <input type="email" class="form-control col-md-3" placeholder="Enter Email">
+                                <input type="email" class="form-control offset-md-1 col-md-3" placeholder="Password">
+                                <div class="form-check offset-md-1 col-md-4">
                                     <input type="checkbox" class="form-check-input"><label
                                         class="form-check-label">Remember me</label>
                                 </div>
@@ -73,7 +123,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" id="loginCancel">Cancel</button>
                     <button type="submit" class="btn btn-primary">Sign in</button>
                 </div>
             </div>
@@ -98,7 +148,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-items-center">
-                    <a href="#frm"><button class="btn btn-warning mt-4 btn-sm">Reserve Table</button></a>
+                    <a><button id="FormCaller" class="btn btn-warning mt-4 btn-sm">Reserve Table</button></a>
                 </div>
             </div>
         </div>
@@ -154,45 +204,75 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
+                    <button class="btn btn-danger btn-sm" id="CarouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
             </div>
         </div>
     </div>
+   <hr>
 
 
-    <div class="row row-content justify-content-center" id="frm">
-        <div class="col-12 col-sm-8">
-            <div class="card">
-                <h3 class="card-header reserve text-white" style="background-color: #ffc107;">Reserve a Table</h3>
-                <div class="card-body">
-                    <div class="row">
-                        <form id="reservationForm">
-                            <div class="form-group row align-items-center">
-                                <label for="guests" class="col-12 col-md-2 col-form-label">Number of Guests</label>
-                                <div class="ml-3">
-                                    <label class="radio"><input type="radio" name="1" checked> 1 </label>
-                                    <label class="radio"><input type="radio" name="2"> 2 </label>
-                                    <label class="radio"><input type="radio" name="3"> 3 </label>
-                                    <label class="radio"><input type="radio" name="4"> 4 </label>
-                                    <label class="radio"><input type="radio" name="5"> 5 </label>
-                                    <label class="radio"><input type="radio" name="6"> 6 </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="date" class="col-12 col-md-2 col-form-label">Date and Time</label>
-                                <div class="col-12 col-md-4"><input type="text" class="form-control" id="date"
-                                        name="date" placeholder="Date"></input></div>
-                                <div class="col-12 col-md-4"><input type="text" class="form-control" id="time"
-                                        name="time" placeholder="Time"></input></div>
-                            </div>
-                        </form>
+    <div class="container mt-4">
+        <div class="row row-content align-items-center">
+            <div class="col-12 col-sm-4 order-sm-last col-md-3">
+                <h3>Our Lipsmacking Culinary Creations</h3>
+            </div>
+            <div class="col col-sm order-sm-first col-md">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center" src="img/uthappizza.png" alt="uthappizza">
+                    <div class="media-body">
+                        <h2 class="mt-0">Uthappizza <span class="badge badge-danger">HOT</span> <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                        <p class="d-none d-sm-block">A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p> 
+                   
                     </div>
+                  
+                </div>
+                
+            </div>
+        </div>
+      <hr>
+
+        <div class="row row-content align-items-center mt-4">
+            <div class="col-12 col-sm-4 col-md-3">
+                <h3>This Month's Promotions</h3>
+            </div>
+            
+            <div class="col col-sm col-md">
+                
+                <div class="media">
+                    <div class="media-body">
+                        <h2>Weekend Grand Buffet <span class="badge badge-danger">NEW</span></h2>
+                        <p class="d-none d-sm-block">Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+
+                    </div>
+                    <img class="d-flex ml-3 img-thumbnail align-self-center" src="img/buffet.png" alt="uthappizza">
                 </div>
             </div>
         </div>
-    </div>
+     <hr>
+        <div class="row row-content align-items-center mt-4">
+            <div class="col-12 col-sm-4 order-sm-last col-md-3">
+                <h3>Meet our Culinary Specialists</h3>
+            </div>
+            <div class="col col-sm order-sm-first col-md">
+                <div class="media">
+                    <img class="d-flex mr-3 img-thumbnail align-self-center" src="img/alberto.png" alt="alberto">
+                    <div class="media-body">
+                        <h2 class="mt-0">Alberto Somayya</h2>
+                        <h4>Executive Chef</h4>
+                        <p class="d-none d-sm-block">Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. </p>
+           
+                    </div>
+                </div>
+                
+             </div>
+        </div>
+
     </div>
 
-    
+
+
     <footer class="footer">
         <div>
             <div class="row align-items-center">
@@ -245,5 +325,46 @@
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#FormCaller").click(function(){
+            $("#FormModal").modal("toggle");
+        });
 
+        $("#FormClose").click(function(){
+            $("#FormModal").modal("hide");
+        });
+
+        $("#FormCancel").click(function(){
+            $("#FormModal").modal("hide");
+        });
+
+        $("#loginCaller").click(function(){
+            $("#loginModal").modal("toggle");
+        });
+
+        $("#loginClose").click(function(){
+            $("#loginModal").modal("hide");
+        });
+
+        $("#loginCancel").click(function(){
+            $("#loginModal").modal("hide");
+        });
+
+        $("#indexcarousel").carousel({interval:2000});
+
+        $("#CarouselButton").click(function(){
+            if($("#CarouselButton").children("span").hasClass("fa-pause")){
+                $("#indexcarousel").carousel("pause"); 
+                $("#CarouselButton").children("span").removeClass("fa-pause");
+                $("#CarouselButton").children("span").addClass("fa-play");
+            }else if($("#CarouselButton").children("span").hasClass("fa-play")){
+                $("#indexcarousel").carousel("cycle"); 
+                $("#CarouselButton").children("span").removeClass("fa-play");
+                $("#CarouselButton").children("span").addClass("fa-pause");
+            }
+        })
+        
+    });
+</script>
 </html>
