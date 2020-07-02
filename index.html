@@ -8,10 +8,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
+    <!-- build:css css/main.css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- endbuild -->
     <title>Ristorante Con Fusion</title>
 </head>
 
@@ -210,10 +212,9 @@
             </div>
         </div>
     </div>
-   <hr>
 
 
-    <div class="container mt-4">
+    <div class="container">
         <div class="row row-content align-items-center">
             <div class="col-12 col-sm-4 order-sm-last col-md-3">
                 <h3>Our Lipsmacking Culinary Creations</h3>
@@ -231,9 +232,8 @@
                 
             </div>
         </div>
-      <hr>
 
-        <div class="row row-content align-items-center mt-4">
+        <div class="row row-content align-items-center">
             <div class="col-12 col-sm-4 col-md-3">
                 <h3>This Month's Promotions</h3>
             </div>
@@ -250,8 +250,8 @@
                 </div>
             </div>
         </div>
-     <hr>
-        <div class="row row-content align-items-center mt-4">
+
+        <div class="row row-content align-items-center">
             <div class="col-12 col-sm-4 order-sm-last col-md-3">
                 <h3>Meet our Culinary Specialists</h3>
             </div>
@@ -322,49 +322,10 @@
     </footer>
 </body>
 <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+<!-- build:js js/main.js -->
 <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#FormCaller").click(function(){
-            $("#FormModal").modal("toggle");
-        });
-
-        $("#FormClose").click(function(){
-            $("#FormModal").modal("hide");
-        });
-
-        $("#FormCancel").click(function(){
-            $("#FormModal").modal("hide");
-        });
-
-        $("#loginCaller").click(function(){
-            $("#loginModal").modal("toggle");
-        });
-
-        $("#loginClose").click(function(){
-            $("#loginModal").modal("hide");
-        });
-
-        $("#loginCancel").click(function(){
-            $("#loginModal").modal("hide");
-        });
-
-        $("#indexcarousel").carousel({interval:2000});
-
-        $("#CarouselButton").click(function(){
-            if($("#CarouselButton").children("span").hasClass("fa-pause")){
-                $("#indexcarousel").carousel("pause"); 
-                $("#CarouselButton").children("span").removeClass("fa-pause");
-                $("#CarouselButton").children("span").addClass("fa-play");
-            }else if($("#CarouselButton").children("span").hasClass("fa-play")){
-                $("#indexcarousel").carousel("cycle"); 
-                $("#CarouselButton").children("span").removeClass("fa-play");
-                $("#CarouselButton").children("span").addClass("fa-pause");
-            }
-        })
-        
-    });
-</script>
+<script src="js/scripts.js"></script>
+<!-- endbuild -->
 </html>

@@ -6,7 +6,7 @@
   margin: 0px auto;
   padding: 50px 0px;
   border-bottom: 1px ridge;
-  min-height: 400px; }
+  min-height: 200px; }
 
 .footer {
   background-color: #D1C4E9;
@@ -47,10 +47,11 @@ body {
       left: 0;
       min-height: 300px; }
 
-#carouselButton {
-  right: 0px;
-  position: absolute;
-  bottom: 0px; }
+ #CarouselButton{
+        right:0px;
+        bottom:0px;
+        position:absolute;
+    }
 
 .modal .modal-header {
   background: #512DA8;
